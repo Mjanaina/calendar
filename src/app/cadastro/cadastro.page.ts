@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UsuarioService } from 'src/app/Services/usuario.service';
 import { Subscription } from 'rxjs';
-import { dir } from 'console';
+
 
 @Component({
   selector: 'app-cadastro',
@@ -58,7 +58,9 @@ export class CadastroPage implements OnInit {
       this.router.navigate(['/tabs/tab1']);
 
     } catch(error) {
-      console.dir(error);
+      // console.dir(error);
+      console.log(error);
+      
     } 
   }
 
