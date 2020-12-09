@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button fill="clear" routerLink="/lista-usuarios">
-        <ion-icon slot="icon-only" name="search-outline"></ion-icon>      </ion-button>
+        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,7 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let evento of eventos">
-      <ion-item button [routerLink]="[ '/detalhesevento', evento.id ]">
+      <ion-item button [routerLink]="[ '/detalhes-evento', evento.id ]">
         <ion-label>
           @{{ evento.usuarioNome }}
           <p> {{ evento.titulo }} • {{ evento.comeco | date: 'short' }} </p>

@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-usuarios.page.scss'],
 })
 export class ListaUsuariosPage implements OnInit {
+  
+  constructor(
+   
+  ) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
   }
+
 
 }

@@ -1,9 +1,40 @@
+  
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalhes-evento</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Evento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <h3 class="ion-text-center"> {{ evento.titulo }} </h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <h5 > {{ evento.descricao }} </h5>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <p class="ion-text-center"> @{{ evento.usuarioNome }} • {{ evento.comeco | date: short }} </p>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="ion-align-items-center" button lines="none" >
+          <ion-icon name="arrow-undo-outline"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item button lines="none" (click)="add()">
+          <ion-icon name="add-outline"></ion-icon>
+          <p> {{ evento.numAdd }} </p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
