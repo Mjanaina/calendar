@@ -26,7 +26,7 @@ export class ListaUsuariosPage implements OnInit {
   }
 
   async ngOnInit() {
-    this.usuarios = await this.inicializaItens();
+    // this.usuarios = await this.inicializaItens();
   }
 
  async inicializaItens(): Promise <any> {
@@ -45,11 +45,21 @@ export class ListaUsuariosPage implements OnInit {
     if (!this.pesquisa) {
       return;
     }
-
+    console.log(this.usuarios);
+    
     this.usuarios = this.usuarios.filter(usuario => {
       if (usuario.username && this.pesquisa) {
         return (usuario.username.toLowerCase().indexOf(this.pesquisa.toLowerCase()) > -1);
       }
     })
+  }
+
+  nome(){
+    console.log();
+    
+  }
+
+  seguir() {
+
   }
 }

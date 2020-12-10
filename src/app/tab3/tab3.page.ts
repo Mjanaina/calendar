@@ -29,19 +29,19 @@ export class Tab3Page {
   }
 
   async filterUsuarios() {
-    const userUid = (await this.fireauth.currentUser).uid
+    // const userUid = (await this.fireauth.currentUser).uid
   
-    for (let i = 0; i < this.usuarios.length; i++) {
-        if (this.usuarios[i].uid === userUid) {
-          this.usuarioId = this.usuarios[i].uid
-          try {
-           await this.usuarioServ.getUsuario(this.usuarioId);
-          } catch(error) {
-            console.log(error);
+    // for (let i = 0; i < this.usuarios.length; i++) {
+    //     if (this.usuarios[i].uid === userUid) {
+    //       this.usuarioId = this.usuarios[i].uid
+    //       try {
+    //        await this.usuarioServ.getUsuario(this.usuarioId);
+    //       } catch(error) {
+    //         console.log(error);
             
-          }
-        }
-    }
+    //       }
+    //     }
+    // }
   }
 
   async logout() {

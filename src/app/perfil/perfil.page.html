@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-left">{{ usuario.username }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="divTop">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center"> {{ usuario.numEventos }} eventos</ion-col>
+        <ion-col class="ion-text-center"> {{ usuario.numSeguindo }} seguindo</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button class="ion-margin-top" fill="solid" expand="block" >Seguir</ion-button>
+  </div>
+</ion-content>
