@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="pesquisa" (ionInput)="filterList($event)" placeholder="Quem procuras?"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
