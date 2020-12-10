@@ -30,6 +30,12 @@ export class CadastroPage implements OnInit {
   }
 
   async cadastrar() {
+
+    if (this.usuario.senha != this.usuario.confSenha) {
+      this.presentToast("The passwords doesn't match!");
+      return console.error("as senhas não são iguais")
+    }
+
     try{
       const novoUser = await this.fireauth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
 
@@ -43,6 +49,14 @@ export class CadastroPage implements OnInit {
       
       await this.usuarioServ.addUsuario(this.usuario);
       
+      this.fireauth.onAuthStateChanged(user => {
+        if (user) {
+          user.updateProfile({
+            displayName: this.usuario.username
+          })
+        }
+      })
+
       this.router.navigate(['/tabs/tab1']);
     } catch(error) {
       // console.dir(error);
