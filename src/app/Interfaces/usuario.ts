@@ -7,4 +7,5 @@ export interface Usuario {
     numSeguindo?: number;
     numEventos?: number
     id?: string;
+    uid?: string;
 }

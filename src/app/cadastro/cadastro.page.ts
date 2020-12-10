@@ -30,33 +30,20 @@ export class CadastroPage implements OnInit {
   }
 
   async cadastrar() {
-  
-
-    if (this.usuario.senha != this.usuario.confSenha) {
-      this.presentToast("The passwords doesn't match!")
-      return console.log("as senhas não são iguais");
-    }
-
     try{
-      const novoUser = await this.fireauth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha);
-      this.usuario.email = novoUser.user.email;
+      const novoUser = await this.fireauth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
+
       this.usuario.numEventos = 0;
-      this.usuario.seguindo = [];
       this.usuario.numSeguindo = 0;
-
-      this.fireauth.onAuthStateChanged(user => {
-        if (user) {
-          user.updateProfile({
-            displayName: this.usuario.username
-          })
-        }
-      })
-      delete this.usuario.confSenha;
-      delete this.usuario.senha;
+      this.usuario.seguindo = [];
+      this.usuario.uid = novoUser.user.uid;
+      
+      delete this.usuario.confSenha
+      delete this.usuario.senha
+      
       await this.usuarioServ.addUsuario(this.usuario);
-
+      
       this.router.navigate(['/tabs/tab1']);
-
     } catch(error) {
       // console.dir(error);
       console.log(error);
