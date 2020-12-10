@@ -26,7 +26,9 @@ export class DetalhesEventoPage implements OnInit {
     private comentarioServ: ComentarioService,
     private activatedRoute: ActivatedRoute
   ) { 
-    
+    this.comentarioSubs = this.comentarioServ.getComentarios().subscribe(data => {
+      this.comentarios = data.filter(com => com.idPost === this.eventoId).sort((a,b) => a.createdAt > b.createdAt ? -1 : 1);
+    })
   }
 
   ngOnInit() {
@@ -67,6 +69,18 @@ export class DetalhesEventoPage implements OnInit {
 
         await this.eventoServ.updateEvento(this.eventoId, this.evento);
       }
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  async coment() {
+    try{
+      this.comentario.createdAt = new Date().getTime();
+      this.comentario.username = (await this.fireauth.currentUser).displayName
+      this.comentario.idPost = this.eventoId;
+
+      await this.comentarioServ.addComentario(this.comentario)
     } catch(error) {
       console.log(error);
       
