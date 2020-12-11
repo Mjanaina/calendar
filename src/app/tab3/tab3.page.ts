@@ -6,6 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Evento } from 'src/app/Interfaces/evento';
+import { EventoService } from 'src/app/Services/evento.service';
 
 @Component({
   selector: 'app-tab3',
@@ -15,20 +17,32 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class Tab3Page implements OnInit {
   private usuarios = new Array<Usuario>();
   private usuariosSubs: Subscription
+  private eventos = new Array<Evento>();
+  private eventosSubs: Subscription;
 
   constructor(
     private usuarioServ: UsuarioService,
     private firestore: AngularFirestore,
     private fireauth: AngularFireAuth,
-    private router: Router
-  ) { }
+    private router: Router,
+    private eventoServ: EventoService
+  ) { 
+    this.showEvents();
+  }
 
   async ngOnInit() {
     this.displayInfo();
     
   }
 
-  
+  async showEvents() {
+    const userUid = (await this.fireauth.currentUser).uid
+    console.log(userUid);
+    
+    this.eventosSubs = this.eventoServ.getEventos().subscribe(data => {
+      this.eventos = data.filter(eve => eve.usuarioId == userUid)
+    })
+  }
 
   ngOnDestroy() {
   }

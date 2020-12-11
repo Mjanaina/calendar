@@ -7,15 +7,32 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="divTop">
-    <ion-grid>
-      <ion-row>
-        <ion-col class="ion-text-center">2 eventos</ion-col>
-        <ion-col class="ion-text-center">10 seguindo</ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-button class="ion-margin-top" fill="solid" expand="block" (click)="logout()">Configurações
-    </ion-button>
-  </div>
+    <ion-button class="ion-margin-top" fill="solid" expand="block" (click)="logout()">Configurações</ion-button>
+    
+    <ion-list>
+      <ion-item-sliding *ngFor="let evento of eventos">
+        <ion-item button>
+          <ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h2>{{ evento.titulo }}</h2>
+                </ion-col>
+                <ion-col>
+                  <p>{{ evento.comeco | date: short}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <h4>{{ evento.descricao }}</h4>
+          </ion-label>
+        </ion-item>
+  
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteEvento(evento.id)">
+            <ion-icon slot="top" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
 
 </ion-content>
