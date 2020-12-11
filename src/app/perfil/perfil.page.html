@@ -8,13 +8,24 @@
 </ion-header>
 
 <ion-content>
-  <div id="divTop">
-    <ion-grid>
-      <ion-row>
-        <ion-col class="ion-text-center"> {{ usuario.numEventos }} eventos</ion-col>
-        <ion-col class="ion-text-center"> {{ usuario.numSeguindo }} seguindo</ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-button class="ion-margin-top" fill="solid" expand="block" >Seguir</ion-button>
-  </div>
+  
+    <ion-button class="ion-margin-top" fill="solid" expand="block" (click)="seguir()">Seguir</ion-button>
+  
+    <ion-list>
+      <ion-item button *ngFor="let evento of eventos">
+        <ion-label>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <h2>{{ evento.titulo }}</h2>
+              </ion-col>
+              <ion-col>
+                <p>{{ evento.comeco | date: short}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <h4>{{ evento.descricao }}</h4>
+        </ion-label>
+      </ion-item>
+    </ion-list>
 </ion-content>

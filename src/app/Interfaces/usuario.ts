@@ -4,8 +4,6 @@ export interface Usuario {
     confSenha?: string;
     username?: string;
     seguindo?: string[];
-    numSeguindo?: number;
-    numEventos?: number
     id?: string;
     uid?: string;
 }

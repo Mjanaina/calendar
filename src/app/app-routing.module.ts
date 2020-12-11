@@ -8,7 +8,11 @@ const routes: Routes = [
   { path: 'detalhes-evento/:id', loadChildren: () => import('./detalhes-evento/detalhes-evento.module').then( m => m.DetalhesEventoPageModule)},
   { path: 'configuracoes', loadChildren: () => import('./configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)},
   { path: 'lista-usuarios', loadChildren: () => import('./lista-usuarios/lista-usuarios.module').then( m => m.ListaUsuariosPageModule)},
-  { path: 'perfil/:id', loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)}
+  { path: 'perfil/:id', loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)},  {
+    path: 'nova-senha',
+    loadChildren: () => import('./nova-senha/nova-senha.module').then( m => m.NovaSenhaPageModule)
+  }
+
 
 ];
 @NgModule({

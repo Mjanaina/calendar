@@ -39,8 +39,6 @@ export class CadastroPage implements OnInit {
     try{
       const novoUser = await this.fireauth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
 
-      this.usuario.numEventos = 0;
-      this.usuario.numSeguindo = 0;
       this.usuario.seguindo = [];
       this.usuario.uid = novoUser.user.uid;
       
