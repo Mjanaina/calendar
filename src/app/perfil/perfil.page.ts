@@ -31,7 +31,7 @@ export class PerfilPage implements OnInit {
     private eventoServ: EventoService
   ) { 
     this.eventosSubs = this.eventoServ.getEventos().subscribe(data => {
-      this.eventos = data.filter(eve => eve.usuarioId == this.usuario.uid || eve.usersAdd.includes(this.usuarioId) == true)
+      this.eventos = data.filter(eve => eve.usuarioId == this.usuario.uid)
     })
   }
 
@@ -57,17 +57,6 @@ export class PerfilPage implements OnInit {
     })
   }
 
-  async inicializaItens(): Promise <any> {
-    const listaUsuarios = await this.firestore.collection('Usuários').valueChanges().pipe(first()).toPromise();
-    return listaUsuarios;
-  }
-
-  async seguir() {
-    this.listaUsuarios = await this.inicializaItens();
-    const uid = (await this.fireauth.currentUser).uid;
- 
-
-  }
 
 
 }

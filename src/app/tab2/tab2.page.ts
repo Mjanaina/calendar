@@ -65,6 +65,7 @@ export class Tab2Page implements OnInit {
     this.evento.numAdd = 0;
     this.evento.usuarioId = (await this.fireauth.currentUser).uid
     this.evento.usuarioNome = (await this.fireauth.currentUser).displayName
+    this.evento.createdAt = new Date().getTime();
     try {
       await this.eventoServ.addEvento(this.evento);
     } catch(error) {

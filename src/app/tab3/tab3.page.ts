@@ -26,21 +26,22 @@ export class Tab3Page implements OnInit {
     private fireauth: AngularFireAuth,
     private router: Router,
     private eventoServ: EventoService
-  ) { 
+  ) {
     this.showEvents();
   }
 
   async ngOnInit() {
     this.displayInfo();
-    
+
   }
 
   async showEvents() {
-    const userUid = (await this.fireauth.currentUser).uid
-    console.log(userUid);
-    
-    this.eventosSubs = this.eventoServ.getEventos().subscribe(data => {
-      this.eventos = data.filter(eve => eve.usuarioId == userUid)
+    this.fireauth.onAuthStateChanged(user => {
+      if (user) {
+        this.eventosSubs = this.eventoServ.getEventos().subscribe(data => {
+          this.eventos = data.filter(eve => eve.usuarioId == user.uid || eve.usersAdd.includes(user.displayName) == true)
+        })
+      }
     })
   }
 
@@ -61,13 +62,13 @@ export class Tab3Page implements OnInit {
   }
 
   async logout() {
-     try {
-       await this.fireauth.signOut();
-     this.router.navigate(['/login'])
-     } catch(error) {
+    try {
+      await this.fireauth.signOut();
+      this.router.navigate(['/login'])
+    } catch (error) {
       console.log(error);
 
-     }
+    }
   }
 
 }

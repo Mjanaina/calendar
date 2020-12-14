@@ -53,7 +53,7 @@ export class DetalhesEventoPage implements OnInit {
   }
   
   async add() {
-    const userVerif = (await this.fireauth.currentUser).uid
+    const userVerif = (await this.fireauth.currentUser).displayName
   
     try{
       if (this.evento.usersAdd.includes(userVerif) === false) {

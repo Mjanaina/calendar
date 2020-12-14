@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/Services/usuario.service';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class ListaUsuariosPage implements OnInit {
 
   constructor(
     private usuarioServ: UsuarioService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private fireauth: AngularFireAuth
   ) { 
     this.usuariosSubs = this.usuarioServ.getUsuarios().subscribe(data => {
       this.usuarios = data;
@@ -45,7 +47,9 @@ export class ListaUsuariosPage implements OnInit {
     if (!this.pesquisa) {
       return;
     }
-    console.log(this.usuarios);
+    
+    // const userUid = (await this.fireauth.currentUser).uid
+    // console.log(userUid);
     
     this.usuarios = this.usuarios.filter(usuario => {
       if (usuario.username && this.pesquisa) {
