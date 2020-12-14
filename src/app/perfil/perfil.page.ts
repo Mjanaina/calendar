@@ -31,7 +31,7 @@ export class PerfilPage implements OnInit {
     private eventoServ: EventoService
   ) { 
     this.eventosSubs = this.eventoServ.getEventos().subscribe(data => {
-      this.eventos = data.filter(eve => eve.usuarioId == this.usuario.uid)
+      this.eventos = data.filter(eve => eve.usuarioNome === this.usuario.username || eve.usersAdd.includes(this.usuario.username) === true)
     })
   }
 
