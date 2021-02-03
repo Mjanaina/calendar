@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button color="light">
         <ion-icon slot="icon-only" name="calendar"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title color="light">
       {{ currentMonth }}
     </ion-title>
   </ion-toolbar>
@@ -55,10 +55,14 @@
       </ion-select>
     </ion-item>
     <ion-item>
+      <ion-label><b>Local:</b></ion-label>
+      <ion-input type="text" placeholder="Em que escola?" [(ngModel)]="evento.local"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label><b>Horário:</b></ion-label>
       <ion-datetime doneText="OK" cancelText="Cancelar" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MMM D HH:mm" [(ngModel)]="evento.comeco" [min]="minDate"></ion-datetime>
     </ion-item>
-    <ion-button color="warning" expand="block" (click)="addEvento()">Adicionar</ion-button>
+    <ion-button expand="block" (click)="addEvento()">Adicionar</ion-button>
   </div>
 
   <calendar *ngIf="!showAddEvent" id="myCalendar"

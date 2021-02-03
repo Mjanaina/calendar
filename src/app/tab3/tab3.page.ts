@@ -61,14 +61,15 @@ export class Tab3Page implements OnInit {
     })
   }
 
-  async logout() {
-    try {
-      await this.fireauth.signOut();
-      this.router.navigate(['/login'])
-    } catch (error) {
-      console.log(error);
 
+
+  async deleteEvento(id: string) {
+    try{
+      await this.eventoServ.deleteEvento(id);
+    } catch(error) {
+      console.log(error);
     }
+
   }
 
 }

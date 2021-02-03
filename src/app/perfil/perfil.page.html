@@ -1,15 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-left">{{ usuario.username }} </ion-title>
+    <ion-title color="light" class="ion-text-left">{{ usuario.username }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-    <ion-button class="ion-margin-top" fill="solid" expand="block" (click)="seguir()">Seguir</ion-button>
   
     <ion-list>
       <ion-item button *ngFor="let evento of eventos">

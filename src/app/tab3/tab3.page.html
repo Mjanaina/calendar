@@ -1,14 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title color="light">
       <div class="nome_user"></div>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/configuracoes">
+        <ion-icon slot="icon-only" color="light" name="settings-outline"></ion-icon>      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-    <ion-button class="ion-margin-top" fill="solid" expand="block" (click)="logout()">Configurações</ion-button>
-    
+<ion-content [fullscreen]="true">    
     <ion-list>
       <ion-item-sliding *ngFor="let evento of eventos">
         <ion-item button>
